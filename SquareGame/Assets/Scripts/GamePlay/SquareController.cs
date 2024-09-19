@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using SquareOne;
 public class SquareController : SingletonComponent<SquareController>
 {
     [SerializeField] private Camera mainCamera;
@@ -31,8 +32,11 @@ public class SquareController : SingletonComponent<SquareController>
     public Vector2 screenBounds;
     public Color _timerTextColor;
     public GameObject EncouragingText;
-    public Action onAction;
+    public Action onAction , Action_OnMultiplayerStart;
     public bool isGameOver = false;
+    public float multiWaitingTimeInSec = 30;
+    public GameObject player;
+    public int opponentScore;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,19 +46,37 @@ public class SquareController : SingletonComponent<SquareController>
 
     public void Game1()
     {
-
+        Constant.isPlayingMulti = false;
         PlayerIQScore = 0;
         generatedSquaresList = new List<GameObject>();
         switch (Constant.gameMode)
         {
             case GameMode.Game1: _iSquareManager = gameObject.AddComponent<Game1Square>(); break;
-            case GameMode.Game2: _iSquareManager = gameObject.AddComponent<Game2>(); break;
+            case GameMode.Game2:  CheckForMultiplayer(); break;// _iSquareManager = gameObject.AddComponent<Game2>(); break;
             case GameMode.Game3: _iSquareManager = gameObject.AddComponent<Game3>(); break;
         }
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
        
         // _iSquareManager = gameObject.AddComponent<Game2>();
         //MoveToNextRound();
+    }
+
+    void CheckForMultiplayer()
+    {
+        if (Constant.gameNetwork == GameNetwok.Multi)
+        {
+            Constant.isPlayingMulti = true;
+            new GameObject("Multiplayer Controller").AddComponent<MultiplayerController>();
+        }
+        else
+            StartGame2();
+        
+    }
+
+    public void StartGame2()
+    {
+        _iSquareManager = gameObject.AddComponent<Game2>();
+        Debug.Log("   testettetette  ");
     }
 
     public void RestartGame()

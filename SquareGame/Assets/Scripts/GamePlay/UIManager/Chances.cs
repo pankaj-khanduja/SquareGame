@@ -9,7 +9,7 @@ public class Chances : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        OnInitializeLifes();
     }
 
     private void OnEnable()
@@ -17,8 +17,6 @@ public class Chances : MonoBehaviour
         lifeObj = new Stack<GameObject>();
         SquareController.Instance.onPenatltyUpdate += PenaltyPointUpdate;
         SquareController.Instance.onRestart += OnInitializeLifes;
-        OnInitializeLifes();
-
 
     }
 

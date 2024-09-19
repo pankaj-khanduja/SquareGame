@@ -2,8 +2,8 @@
     using System.Collections.Generic;
     using Unity.VisualScripting;
     using UnityEngine;
-
-    public class Game3 : MonoBehaviour, ISquare
+using SquareOne;
+public class Game3 : MonoBehaviour, ISquare
     {
     int connectingNumber;
     public float TimeLeft { get; private set; }

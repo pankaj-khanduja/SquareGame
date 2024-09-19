@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using SquareOne;
 public struct SquareData
 {
     public int number {get; private set;}

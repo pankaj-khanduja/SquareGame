@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using SquareOne;
 public class Game2 : MonoBehaviour, ISquare
 {
     int connectingNumber;
@@ -13,9 +13,11 @@ public class Game2 : MonoBehaviour, ISquare
 
     void Start()
     {
+
         Constant.range1 = 0.01f;
         TimeLeft = 60;
         HighlightText = "You have 60 seconds\nto connect as much as you can";
+        SquareController.Instance.opponentScore = 0;
         SquareController.Instance.onTimeHighlight?.Invoke(OnRestartGame);
         //OnRestartGame();
     }

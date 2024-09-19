@@ -2,6 +2,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using DigitalRuby.AnimatedLineRenderer;
+using SquareOne;
 public class LineRendererManager : MonoBehaviour
 {
     private LineRenderer lineRenderer = null;

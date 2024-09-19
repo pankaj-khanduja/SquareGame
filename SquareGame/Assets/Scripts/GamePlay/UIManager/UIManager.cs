@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using SquareOne;
 public class UIManager : MonoBehaviour
 {
     public Button restart_Btn;
@@ -12,11 +13,13 @@ public class UIManager : MonoBehaviour
     public GameObject squareDisplayObj;
     public GameObject timeHighlightObj;
     public GameObject LifeControllerObj;
+    public GameObject InGameCanvas, WaitingCanvas , MultiScoreView;
     bool gameOn = false;
     // public 
     // Start is called before the first frame update
     void Start()
     {
+        
         restart_Btn.onClick.AddListener(OnHomeBtnClicked);
         if (Constant.gameMode.Equals(GameMode.Game3)) {
             SquareController.Instance.onPenatltyUpdate += PenaltyPointUpdate;
@@ -24,6 +27,7 @@ public class UIManager : MonoBehaviour
         }
         else SquareController.Instance.onGameBegin += SquareGenerated;
 
+        SquareController.Instance.Action_OnMultiplayerStart = EnableMultiCanvas;
         SquareController.Instance.onTimeHighlight += TimeDisplayCounter;
         SquareController.Instance.onUserUpdate += OnUserUpdate;
         SquareController.Instance.onLevelCleared += LevelCleared;
@@ -31,7 +35,22 @@ public class UIManager : MonoBehaviour
         playerIQScore.text = "IQ : 0";
         LifeControllerObj.SetActive(true);
 
+        if(!Constant.isPlayingMulti)
+        {
+            InGameCanvas.SetActive(true);
+        }else
+        {
+            WaitingCanvas.SetActive(true);
+            playerIQScore.enabled = false;
+            MultiScoreView.SetActive(true);
+        }
 
+    }
+
+    void EnableMultiCanvas()
+    {
+        InGameCanvas.SetActive(true);
+        WaitingCanvas.SetActive(false);
     }
 
     private void OnDisable()
@@ -52,6 +71,7 @@ public class UIManager : MonoBehaviour
 
     void SquareGenerated()
     {
+
         StopCoroutine("OnTimeCountDown");
         Debug.Log("Square generated!!!");
         SquareController.Instance.gameTime = SquareController.Instance.GetManager().TimeLeft;

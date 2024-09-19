@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System;
 using EasyTransition;
+using SquareOne;
 public class MenuUIManager : MonoBehaviour
 {
     public Button btn_Game1 , btn_Game2 , btn_Game3 , btn_Play , btn_Play1 , btn_Solo , btn_Multi;
@@ -23,7 +24,8 @@ public class MenuUIManager : MonoBehaviour
         btn_Game3.onClick.AddListener(Game3Called);
         btn_Play.onClick.AddListener(SelectedRange);
         btn_Play1.onClick.AddListener(SelectedRange);
-        //btn_Solo.onClick.AddListener
+        btn_Solo.onClick.AddListener(SoloClicked);
+        btn_Multi.onClick.AddListener(MultiClicked);
     }
 
 
@@ -42,7 +44,7 @@ public class MenuUIManager : MonoBehaviour
        // TransitionManager.Instance().Transition(Scene.GameScene.ToString(), _transitionSetting ,0.0f);
         //if(int.TryParse(_rangeInput.text,out int res))
         //    Constant.range1 = res / 100.0f;
-        Constant.SwitchScene(Scene.GameScene);
+        Constant.SwitchScene(SquareOne.Scene.GameScene);
     }
 
     void SelectedRange()
