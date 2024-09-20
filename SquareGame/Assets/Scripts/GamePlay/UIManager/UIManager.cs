@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using SquareOne;
+
 public class UIManager : MonoBehaviour
 {
     public Button restart_Btn;
@@ -127,8 +128,9 @@ public class UIManager : MonoBehaviour
             timeLeft_Text.color = SquareController.Instance._timerTextColor;
         }
     }
-    void OnHomeBtnClicked()
+    public void OnHomeBtnClicked()
     {
+       
         Constant.SwitchScene(Scene.MenuScene);
         // SquareController.Instance.ResetSquare(MoveToNextlevel);
     }

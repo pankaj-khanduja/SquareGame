@@ -303,6 +303,7 @@
             "name": "Mesh",
             "scenes": [
               "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
+              "Assets/Scenes/GameScene.unity",
               "Assets/Scenes/MenuScene.unity"
             ],
             "dependencyType": 0,

@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using SquareOne;
 public class GameOver : MonoBehaviour
 {
-    public TextMeshProUGUI _IQScoreText;
+    
     // Start is called before the first frame update
-   
+    public GameObject SoloGameOverCanvas, MultiGameOverCanas;
+  
 
-    private void OnEnable()
+    private void Start()
     {
-        _IQScoreText.text = SquareController.Instance.PlayerIQScore.ToString();
+       GameObject obj =  Constant.isPlayingMulti ? MultiGameOverCanas: SoloGameOverCanvas;
+       obj.SetActive(true);
+
     }
 
-   
+
 }

@@ -12,7 +12,6 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        Random.InitState(12122);
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.ConnectUsingSettings();
       
@@ -85,9 +84,9 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Debug.Log(" player joined your room  " + PhotonNetwork.CurrentRoom.PlayerCount);
+        Debug.Log(" player joined your room  " + SquareController.Instance.randomSeed);
         if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
-            this.photonView.RPC("OnGameStart", RpcTarget.All);
+            this.photonView.RPC("OnGameStart", RpcTarget.All, SquareController.Instance.randomSeed);
 
     }
 

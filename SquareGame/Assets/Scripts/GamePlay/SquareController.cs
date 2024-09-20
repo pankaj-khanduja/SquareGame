@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using SquareOne;
+using Photon.Pun;
 public class SquareController : SingletonComponent<SquareController>
 {
     [SerializeField] private Camera mainCamera;
@@ -37,6 +38,9 @@ public class SquareController : SingletonComponent<SquareController>
     public float multiWaitingTimeInSec = 30;
     public GameObject player;
     public int opponentScore;
+
+    System.Random random;
+    public int randomSeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,11 +70,19 @@ public class SquareController : SingletonComponent<SquareController>
         if (Constant.gameNetwork == GameNetwok.Multi)
         {
             Constant.isPlayingMulti = true;
+            randomSeed = UnityEngine.Random.Range(000, 99999);
+            random = new System.Random(randomSeed);
             new GameObject("Multiplayer Controller").AddComponent<MultiplayerController>();
         }
         else
             StartGame2();
         
+    }
+
+    public void SetMasterSeed(int seed)
+    {
+        randomSeed = seed;
+        random = new System.Random(randomSeed);
     }
 
     public void StartGame2()
@@ -164,8 +176,14 @@ public class SquareController : SingletonComponent<SquareController>
     {
         // Debug.Log($"size of box is {sprite.bounds} width {Screen.width} heigh {Screen.height}");
         // Generate a random screen position
+        Vector2 randomScreenPosition ;
+        if (Constant.isPlayingMulti)
+        {
+            randomScreenPosition = new Vector2(random.Next(100, (Screen.width - 100)), random.Next(100, (Screen.height - 250)));
+        }else
+            randomScreenPosition = new Vector2(UnityEngine.Random.Range(100, (Screen.width - 100)), UnityEngine.Random.Range(100, (Screen.height - 250)));
 
-        Vector2 randomScreenPosition = new Vector2(UnityEngine.Random.Range(50, (Screen.width - 50)), UnityEngine.Random.Range(50, (Screen.height - 200)));
+
         Vector3 worldPosition = mainCamera.ScreenToWorldPoint(new Vector3(randomScreenPosition.x, randomScreenPosition.y, mainCamera.nearClipPlane));
         worldPosition = new Vector3(worldPosition.x, worldPosition.y, 0);
         if(isOverlapping) return worldPosition;

@@ -7,6 +7,7 @@ using TMPro;
 using System;
 using EasyTransition;
 using SquareOne;
+using PlayFab;
 public class MenuUIManager : MonoBehaviour
 {
     public Button btn_Game1 , btn_Game2 , btn_Game3 , btn_Play , btn_Play1 , btn_Solo , btn_Multi;
@@ -15,6 +16,7 @@ public class MenuUIManager : MonoBehaviour
     public TMP_InputField _rangeInput , _durationInput , _speedInput;
     public Action gameCallBack;
     public TransitionSettings _transitionSetting;
+    public GameObject MenuPanel, LoginPanel;
     // public s
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,10 @@ public class MenuUIManager : MonoBehaviour
         btn_Play1.onClick.AddListener(SelectedRange);
         btn_Solo.onClick.AddListener(SoloClicked);
         btn_Multi.onClick.AddListener(MultiClicked);
+
+        GameObject obj = Constant.IsPlayerLogin ? MenuPanel : LoginPanel;
+        obj.SetActive(true);
+
     }
 
 
@@ -95,5 +101,10 @@ public class MenuUIManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SaveUserData()
+    {
+
     }
 }

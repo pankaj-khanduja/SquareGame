@@ -8,8 +8,12 @@ public class PlayerObj : MonoBehaviourPun, IPunObservable
     public int score;
 
     [PunRPC]
-    public void OnGameStart()
+    public void OnGameStart(int seed)
     {
+        if(!PhotonNetwork.IsMasterClient)
+        {
+            SquareController.Instance.SetMasterSeed(seed);
+        }
         SquareController.Instance.Action_OnMultiplayerStart?.Invoke();
         SquareController.Instance.StartGame2();
     }

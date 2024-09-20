@@ -2,6 +2,11 @@
 	<assembly fullname="Assembly-CSharp" ignoreIfMissing="1">
 		<type fullname="SquareController">
 			<method name="RestartGame"/>
+			<method name="RestartGame"/>
+		</type>
+		<type fullname="UIManager">
+			<method name="OnHomeBtnClicked"/>
+			<method name="OnHomeBtnClicked"/>
 		</type>
 	</assembly>
 	<assembly fullname="Unity.RenderPipelines.Core.Runtime" ignoreIfMissing="1">
@@ -27,8 +32,19 @@
 			<method name="OnIncrement"/>
 		</type>
 	</assembly>
+	<assembly fullname="UnityEngine.AudioModule" ignoreIfMissing="1">
+		<type fullname="UnityEngine.AudioSource">
+			<method name="Play"/>
+			<method name="Play"/>
+			<method name="Play"/>
+			<method name="Play"/>
+			<method name="Play"/>
+			<method name="Play"/>
+		</type>
+	</assembly>
 	<assembly fullname="UnityEngine.CoreModule" ignoreIfMissing="1">
 		<type fullname="UnityEngine.GameObject">
+			<method name="SetActive"/>
 			<method name="SetActive"/>
 			<method name="SetActive"/>
 			<method name="SetActive"/>

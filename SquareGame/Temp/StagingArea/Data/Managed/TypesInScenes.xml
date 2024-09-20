@@ -3,13 +3,16 @@
 		<type fullname="PlayerObj" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Assembly-CSharp">
+		<type fullname="AudioScript" preserve="nothing"/>
 		<type fullname="Chances" preserve="nothing"/>
 		<type fullname="EasyTransition.Transition" preserve="nothing"/>
 		<type fullname="EasyTransition.TransitionManager" preserve="nothing"/>
 		<type fullname="EasyTransition.TransitionSettings" preserve="nothing"/>
 		<type fullname="EncouragingText" preserve="nothing"/>
 		<type fullname="GameOver" preserve="nothing"/>
+		<type fullname="GamePlayAudioScript" preserve="nothing"/>
 		<type fullname="MenuUIManager" preserve="nothing"/>
+		<type fullname="MultiGameOverController" preserve="nothing"/>
 		<type fullname="MultiplayerScoreDisplay" preserve="nothing"/>
 		<type fullname="MultiWaitingController" preserve="nothing"/>
 		<type fullname="PlayerObj" preserve="nothing"/>
@@ -39,25 +42,9 @@
 		<type fullname="Photon.Pun.Demo.SlotRacer.PlayerControl" preserve="nothing"/>
 		<type fullname="Photon.Pun.Demo.SlotRacer.Utils.SplineWalker" preserve="nothing"/>
 	</assembly>
-	<assembly fullname="PhotonUnityNetworking.Demos">
-		<type fullname="Photon.Pun.Demo.PunBasics.CameraWork" preserve="nothing"/>
-		<type fullname="Photon.Pun.Demo.PunBasics.GameManager" preserve="nothing"/>
-		<type fullname="Photon.Pun.Demo.PunBasics.Launcher" preserve="nothing"/>
-		<type fullname="Photon.Pun.Demo.PunBasics.LoaderAnime" preserve="nothing"/>
-		<type fullname="Photon.Pun.Demo.PunBasics.PlayerAnimatorManager" preserve="nothing"/>
-		<type fullname="Photon.Pun.Demo.PunBasics.PlayerManager" preserve="nothing"/>
-		<type fullname="Photon.Pun.Demo.PunBasics.PlayerNameInputField" preserve="nothing"/>
-		<type fullname="Photon.Pun.Demo.PunBasics.PlayerUI" preserve="nothing"/>
-	</assembly>
 	<assembly fullname="PhotonUnityNetworking">
-		<type fullname="Photon.Pun.PhotonAnimatorView" preserve="nothing"/>
-		<type fullname="Photon.Pun.PhotonTransformView" preserve="nothing"/>
 		<type fullname="Photon.Pun.PhotonView" preserve="nothing"/>
 		<type fullname="Photon.Pun.ServerSettings" preserve="nothing"/>
-	</assembly>
-	<assembly fullname="PhotonUnityNetworking.Utilities">
-		<type fullname="Photon.Pun.UtilityScripts.EventSystemSpawner" preserve="nothing"/>
-		<type fullname="Photon.Pun.UtilityScripts.OnStartDelete" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Unity.2D.Animation.Runtime">
 		<type fullname="UnityEngine.U2D.Animation.BufferManager" preserve="nothing"/>
@@ -116,11 +103,8 @@
 		<type fullname="UnityEngine.CharacterController" preserve="nothing"/>
 		<type fullname="UnityEngine.Collider" preserve="nothing"/>
 		<type fullname="UnityEngine.Component" preserve="nothing"/>
-		<type fullname="UnityEngine.FlareLayer" preserve="nothing"/>
 		<type fullname="UnityEngine.Font" preserve="nothing"/>
 		<type fullname="UnityEngine.GameObject" preserve="nothing"/>
-		<type fullname="UnityEngine.Light" preserve="nothing"/>
-		<type fullname="UnityEngine.LightingSettings" preserve="nothing"/>
 		<type fullname="UnityEngine.LightmapSettings" preserve="nothing"/>
 		<type fullname="UnityEngine.Material" preserve="nothing"/>
 		<type fullname="UnityEngine.Mesh" preserve="nothing"/>
@@ -175,12 +159,8 @@
 		<type fullname="UnityEngine.UI.GraphicRaycaster" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.HorizontalLayoutGroup" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.Image" preserve="nothing"/>
-		<type fullname="UnityEngine.UI.InputField" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.LayoutElement" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.RectMask2D" preserve="nothing"/>
-		<type fullname="UnityEngine.UI.Shadow" preserve="nothing"/>
-		<type fullname="UnityEngine.UI.Slider" preserve="nothing"/>
-		<type fullname="UnityEngine.UI.Text" preserve="nothing"/>
 		<type fullname="UnityEngine.UI.VerticalLayoutGroup" preserve="nothing"/>
 	</assembly>
 </linker>

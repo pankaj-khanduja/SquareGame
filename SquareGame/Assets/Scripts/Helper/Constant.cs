@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 namespace SquareOne
 {
+
+   
     public enum GameMode
     {
         Game1 = 0,
@@ -26,6 +29,7 @@ namespace SquareOne
 
     public static class Constant
     {
+        public const string playerLoginStatus = "playerloginStatus";
         public static float range1 = 0.1f;
         public static int duration = 10;
         public static float speed = 0.8f;
@@ -38,6 +42,20 @@ namespace SquareOne
         {
             SceneManager.LoadScene(scene.ToString());
         }
+
+        public static bool IsPlayerLogin
+        {
+            get
+            {
+                return  Convert.ToBoolean( PlayerPrefs.GetInt(playerLoginStatus, 0)) ;
+            }
+        }
+
+        public static void SetPlayerLoginStatus(bool value)
+        {
+            PlayerPrefs.SetInt(playerLoginStatus, Convert.ToInt32(value));
+        }
+
 
     }
 

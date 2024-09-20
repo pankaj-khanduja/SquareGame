@@ -21,8 +21,6 @@
             "fullManagedTypeName": "",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -33,8 +31,6 @@
             "fullManagedTypeName": "",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -52,8 +48,6 @@
             "fullManagedTypeName": "",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -64,8 +58,6 @@
             "fullManagedTypeName": "",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -83,8 +75,6 @@
             "fullManagedTypeName": "",
             "moduleName": "AI",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -109,7 +99,8 @@
             "fullManagedTypeName": "",
             "moduleName": "Audio",
             "usedInScenes": [
-                "Assets/Scenes/GameScene.unity"
+                "Assets/Scenes/GameScene.unity",
+                "Assets/Scenes/MenuScene.unity"
             ]
         },
         {
@@ -132,7 +123,6 @@
             "fullManagedTypeName": "UnityEditor.Animations.AnimatorController",
             "moduleName": "Animation",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -164,8 +154,6 @@
             "fullManagedTypeName": "UnityEditor.MonoScript",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -218,7 +206,6 @@
             "fullManagedTypeName": "UnityEngine.AnimationClip",
             "moduleName": "Animation",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -229,7 +216,6 @@
             "fullManagedTypeName": "UnityEngine.Animator",
             "moduleName": "Animation",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -240,8 +226,6 @@
             "fullManagedTypeName": "UnityEngine.AudioBehaviour",
             "moduleName": "Audio",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -252,7 +236,8 @@
             "fullManagedTypeName": "UnityEngine.AudioClip",
             "moduleName": "Audio",
             "usedInScenes": [
-                "Assets/Scenes/GameScene.unity"
+                "Assets/Scenes/GameScene.unity",
+                "Assets/Scenes/MenuScene.unity"
             ]
         },
         {
@@ -261,8 +246,6 @@
             "fullManagedTypeName": "UnityEngine.AudioListener",
             "moduleName": "Audio",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -273,7 +256,8 @@
             "fullManagedTypeName": "UnityEngine.AudioSource",
             "moduleName": "Audio",
             "usedInScenes": [
-                "Assets/Scenes/GameScene.unity"
+                "Assets/Scenes/GameScene.unity",
+                "Assets/Scenes/MenuScene.unity"
             ]
         },
         {
@@ -282,7 +266,6 @@
             "fullManagedTypeName": "UnityEngine.Avatar",
             "moduleName": "Animation",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
         },
@@ -292,8 +275,6 @@
             "fullManagedTypeName": "UnityEngine.Behaviour",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -304,7 +285,6 @@
             "fullManagedTypeName": "UnityEngine.BoxCollider",
             "moduleName": "Physics",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -315,8 +295,6 @@
             "fullManagedTypeName": "UnityEngine.Camera",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -327,8 +305,6 @@
             "fullManagedTypeName": "UnityEngine.Canvas",
             "moduleName": "UI",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -339,7 +315,6 @@
             "fullManagedTypeName": "UnityEngine.CanvasGroup",
             "moduleName": "UI",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -350,8 +325,6 @@
             "fullManagedTypeName": "UnityEngine.CanvasRenderer",
             "moduleName": "UI",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -371,7 +344,6 @@
             "fullManagedTypeName": "UnityEngine.CharacterController",
             "moduleName": "Physics",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
         },
@@ -381,7 +353,6 @@
             "fullManagedTypeName": "UnityEngine.Collider",
             "moduleName": "Physics",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -392,20 +363,8 @@
             "fullManagedTypeName": "UnityEngine.Component",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
-            ]
-        },
-        {
-            "managedAssemblyName": "UnityEngine.dll",
-            "nativeClass": "FlareLayer",
-            "fullManagedTypeName": "UnityEngine.FlareLayer",
-            "moduleName": "Core",
-            "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity"
             ]
         },
         {
@@ -414,8 +373,6 @@
             "fullManagedTypeName": "UnityEngine.Font",
             "moduleName": "TextRendering",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -426,29 +383,8 @@
             "fullManagedTypeName": "UnityEngine.GameObject",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
-            ]
-        },
-        {
-            "managedAssemblyName": "UnityEngine.dll",
-            "nativeClass": "Light",
-            "fullManagedTypeName": "UnityEngine.Light",
-            "moduleName": "Core",
-            "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity"
-            ]
-        },
-        {
-            "managedAssemblyName": "UnityEngine.dll",
-            "nativeClass": "LightingSettings",
-            "fullManagedTypeName": "UnityEngine.LightingSettings",
-            "moduleName": "Core",
-            "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity"
             ]
         },
         {
@@ -457,8 +393,6 @@
             "fullManagedTypeName": "UnityEngine.LightmapSettings",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -469,8 +403,6 @@
             "fullManagedTypeName": "UnityEngine.Material",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -481,7 +413,7 @@
             "fullManagedTypeName": "UnityEngine.Mesh",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
+                "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
         },
@@ -491,7 +423,6 @@
             "fullManagedTypeName": "UnityEngine.MeshFilter",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
         },
@@ -501,7 +432,6 @@
             "fullManagedTypeName": "UnityEngine.MeshRenderer",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -512,8 +442,6 @@
             "fullManagedTypeName": "UnityEngine.MonoBehaviour",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -524,7 +452,6 @@
             "fullManagedTypeName": "UnityEngine.Motion",
             "moduleName": "Animation",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -535,8 +462,6 @@
             "fullManagedTypeName": "UnityEngine.Object",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -547,7 +472,6 @@
             "fullManagedTypeName": "UnityEngine.ParticleSystem",
             "moduleName": "ParticleSystem",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -558,7 +482,6 @@
             "fullManagedTypeName": "UnityEngine.ParticleSystemRenderer",
             "moduleName": "ParticleSystem",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -576,8 +499,6 @@
             "fullManagedTypeName": "UnityEngine.RectTransform",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -588,8 +509,6 @@
             "fullManagedTypeName": "UnityEngine.Renderer",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -616,8 +535,6 @@
             "fullManagedTypeName": "UnityEngine.RenderSettings",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -628,7 +545,6 @@
             "fullManagedTypeName": "UnityEngine.Rigidbody",
             "moduleName": "Physics",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
         },
@@ -638,7 +554,6 @@
             "fullManagedTypeName": "UnityEngine.RuntimeAnimatorController",
             "moduleName": "Animation",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -649,8 +564,6 @@
             "fullManagedTypeName": "UnityEngine.Shader",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -661,7 +574,6 @@
             "fullManagedTypeName": "UnityEngine.SkinnedMeshRenderer",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
         },
@@ -680,8 +592,6 @@
             "fullManagedTypeName": "UnityEngine.Sprite",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -701,8 +611,6 @@
             "fullManagedTypeName": "UnityEngine.TextAsset",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -713,8 +621,6 @@
             "fullManagedTypeName": "UnityEngine.Texture",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -725,8 +631,6 @@
             "fullManagedTypeName": "UnityEngine.Texture2D",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -737,8 +641,6 @@
             "fullManagedTypeName": "UnityEngine.Transform",
             "moduleName": "Core",
             "usedInScenes": [
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Launcher.unity",
-                "Assets/Photon/PhotonUnityNetworking/Demos/PunBasics-Tutorial/Scenes/PunBasics-Room for 1.unity",
                 "Assets/Scenes/GameScene.unity",
                 "Assets/Scenes/MenuScene.unity"
             ]
@@ -3308,7 +3210,6 @@
     ],
     "forceIncludeModules": [],
     "forceExcludeModules": [
-        "AR",
         "ClusterInput",
         "ClusterRenderer",
         "NVIDIA",
