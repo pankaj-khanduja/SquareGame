@@ -29,7 +29,7 @@ public class MenuUIManager : MonoBehaviour
         btn_Solo.onClick.AddListener(SoloClicked);
         btn_Multi.onClick.AddListener(MultiClicked);
 
-        GameObject obj = Constant.IsPlayerLogin ? MenuPanel : LoginPanel;
+        GameObject obj = Constant.PlayerLogin ? MenuPanel : LoginPanel;
         obj.SetActive(true);
 
     }

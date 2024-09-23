@@ -30,6 +30,7 @@ namespace SquareOne
     public static class Constant
     {
         public const string playerLoginStatus = "playerloginStatus";
+        public const string playerLoginID = "playerLoginID";
         public static float range1 = 0.1f;
         public static int duration = 10;
         public static float speed = 0.8f;
@@ -37,24 +38,42 @@ namespace SquareOne
         public static GameNetwok gameNetwork;
         public static int[] directionMode = new int[] { -1, 1 };
         public static bool isPlayingMulti = false;
+        public const string userName = "userName";
+        public const string picBase64 = "picBase64";
+        public const string customID = "customID";
+
 
         public static void SwitchScene(Scene scene)
         {
             SceneManager.LoadScene(scene.ToString());
         }
 
-        public static bool IsPlayerLogin
+        public static bool PlayerLogin
         {
+            set
+            {
+                PlayerPrefs.SetInt(playerLoginStatus, Convert.ToInt32(value));
+            }
             get
             {
                 return  Convert.ToBoolean( PlayerPrefs.GetInt(playerLoginStatus, 0)) ;
             }
         }
+     
 
-        public static void SetPlayerLoginStatus(bool value)
+        public static string PlayerLoginID
         {
-            PlayerPrefs.SetInt(playerLoginStatus, Convert.ToInt32(value));
+            get
+            {
+                return PlayerPrefs.GetString(playerLoginID, string.Empty);    
+            }
+            set
+            {
+                PlayerPrefs.SetString(playerLoginID, value);
+            }
         }
+
+
 
 
     }
