@@ -54,6 +54,8 @@ public class Game3 : MonoBehaviour, ISquare
 
     void CallGameOver()
     {
+
+        PlayfabController.Instance.SubmitScore(SquareController.Instance.PlayerIQScore, GameMode.Game3);
         CancelInvoke();
         SquareController.Instance.OnResetGame();
         SquareController.Instance.OnGameOver();

@@ -30,6 +30,7 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
         Debug.Log("  OnConnectedToMaster ");
         //photonView = PhotonView.Get(this);
         PhotonNetwork.JoinRandomRoom();
+        SquareController.Instance.roomStatus = "Searching for room";
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -61,6 +62,7 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
+        SquareController.Instance.roomStatus = "Creating room";
         string roomName = "Room " + Random.Range(1000, 10000);
 
         RoomOptions options = new RoomOptions { MaxPlayers = 2};
@@ -70,9 +72,11 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        SquareController.Instance.roomStatus = "Looking for players";
         Debug.Log("   Player Joned Room ");
         GameObject pl = PhotonNetwork.Instantiate(SquareController.Instance.player.name, Vector3.zero , Quaternion.identity);
         photonView = pl.GetComponent<PhotonView>();
+        SquareController.Instance.viewID = photonView.ViewID;
         // joining (or entering) a room invalidates any cached lobby room list (even if LeaveLobby was not called due to just joining a room)
 
     }
@@ -84,7 +88,7 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Debug.Log(" player joined your room  " + SquareController.Instance.randomSeed);
+        SquareController.Instance.roomStatus = "New Player Joined";
         if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
             this.photonView.RPC("OnGameStart", RpcTarget.All, SquareController.Instance.randomSeed);
 
@@ -105,7 +109,12 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
         
     }
 
-   
+    private void OnDestroy()
+    {
+        PhotonNetwork.Disconnect();
+    }
+
+
 
     #endregion
 }

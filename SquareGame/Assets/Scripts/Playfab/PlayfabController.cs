@@ -5,7 +5,7 @@ using PlayFab;
 using PlayFab.ClientModels;
 using System;
 using System.Reflection;
-
+using SquareOne;
 public interface ICallback
 {
     void OnCallBackData(Dictionary<string,string> data);
@@ -14,6 +14,7 @@ public class PlayfabController : MonoBehaviour
 {
     public static PlayfabController Instance { get; private set; } = null;
     public Action<Dictionary<string, string>> onCallBaack;
+    public Action<List<PlayerLeaderboardEntry>> onLeaderboaardDataLoaded;
     public Action onDataSaveCallback;
     private void Awake()
     {
@@ -75,6 +76,7 @@ public class PlayfabController : MonoBehaviour
             Permission = UserDataPermission.Public // Set this to Public or Private as needed
         };
         this.onDataSaveCallback = onDataSaveCallback;
+        UpdatePlayerDisplayName(customData[Constant.userName]);
         PlayFabClientAPI.UpdateUserData(request, OnDataSaveSuccess, OnDataUpdateError);
     }
 
@@ -91,6 +93,98 @@ public class PlayfabController : MonoBehaviour
     private void OnDataUpdateError(PlayFabError error)
     {
         Debug.LogError("Error saving user data: " + error.GenerateErrorReport());
+    }
+
+    public void SubmitScore(int score, GameMode gameMode)
+    {
+        StartCoroutine(SubmitScoreAsync( score, gameMode));
+    }
+
+    IEnumerator SubmitScoreAsync(int score, GameMode gameMode)
+    {
+        SubmitScoreToServer(score, Constant.GetleaderboardName(gameMode, LeaderboardCategory.Weekly));
+        yield return new WaitForSeconds(0.2f);
+        SubmitScoreToServer(score, Constant.GetleaderboardName(gameMode, LeaderboardCategory.Overall));
+    }
+
+     void SubmitScoreToServer(int score , string leaderboardName)
+    {
+        var request = new UpdatePlayerStatisticsRequest
+        {
+            Statistics = new List<StatisticUpdate>
+            {
+                new StatisticUpdate
+                {
+                    StatisticName = leaderboardName,  // Name of the leaderboard in PlayFab
+                    Value = score
+                }
+            }
+        };
+
+        PlayFabClientAPI.UpdatePlayerStatistics(request, OnSubmitScoreSuccess, OnSubmitScoreFailure);
+    }
+
+    private void OnSubmitScoreSuccess(UpdatePlayerStatisticsResult result)
+    {
+        Debug.Log("Successfully submitted score to leaderboard!");
+    }
+
+    private void OnSubmitScoreFailure(PlayFabError error)
+    {
+        Debug.LogError("Failed to submit score: " + error.GenerateErrorReport());
+    }
+
+    public void GetLeaderboardData(string leaderboardName , Action<List<PlayerLeaderboardEntry>> callback)
+    {
+        // Create the request to get the leaderboard
+        var request = new GetLeaderboardRequest
+        {
+            StatisticName = leaderboardName,  // The name of the statistic in PlayFab (must match the one in the dashboard)
+            StartPosition = 0,            // The position to start fetching results from (0 = top of the leaderboard)
+            MaxResultsCount = 50          // Maximum number of results to fetch (e.g., top 10 players)
+        };
+        this.onLeaderboaardDataLoaded = callback;
+        // Call the GetLeaderboard API
+        PlayFabClientAPI.GetLeaderboard(request, OnGetLeaderboardSuccess, OnGetLeaderboardFailure);
+    }
+
+    // Success callback
+    private void OnGetLeaderboardSuccess(GetLeaderboardResult result)
+    {
+        Debug.Log("Successfully retrieved leaderboard data!");
+        onLeaderboaardDataLoaded?.Invoke(result.Leaderboard);
+        foreach (var entry in result.Leaderboard)
+        {
+            Debug.Log($"Player: {entry.DisplayName}, Rank: {entry.Position}, Score: {entry.StatValue}");
+            // Optionally, you can display this data in your UI
+        }
+    }
+
+    // Failure callback
+    private void OnGetLeaderboardFailure(PlayFabError error)
+    {
+        Debug.LogError("Failed to retrieve leaderboard data: " + error.GenerateErrorReport());
+        LoadingComponent.instance.DisableLoader();
+    }
+
+    public void UpdatePlayerDisplayName(string newDisplayName)
+    {
+        var request = new UpdateUserTitleDisplayNameRequest
+        {
+            DisplayName = newDisplayName    // The new display name for the player
+        };
+
+        PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnUpdateDisplayNameSuccess, OnUpdateDisplayNameFailure);
+    }
+
+    private void OnUpdateDisplayNameSuccess(UpdateUserTitleDisplayNameResult result)
+    {
+        Debug.Log("Successfully updated display name to: " + result.DisplayName);
+    }
+
+    private void OnUpdateDisplayNameFailure(PlayFabError error)
+    {
+        Debug.LogError("Failed to update display name: " + error.GenerateErrorReport());
     }
 
 }

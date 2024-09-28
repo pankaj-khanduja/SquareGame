@@ -17,7 +17,10 @@ public class MultiWaitingController : MonoBehaviour
         StartCoroutine("AnimateProgressBar");
     }
 
-   
+    private void Update()
+    {
+        _WaitingText.text = SquareController.Instance.roomStatus;
+    }
 
     IEnumerator AnimateProgressBar()
     {

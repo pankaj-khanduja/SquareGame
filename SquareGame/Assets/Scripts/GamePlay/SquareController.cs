@@ -33,11 +33,14 @@ public class SquareController : SingletonComponent<SquareController>
     public Vector2 screenBounds;
     public Color _timerTextColor;
     public GameObject EncouragingText;
-    public Action onAction , Action_OnMultiplayerStart;
+    public Action onAction , Action_OnMultiplayerStart ;
+    public Action<string, Texture2D> Action_OnOpponentDataReceived , Action_OnLocalPlayerDataReceived;
     public bool isGameOver = false;
     public float multiWaitingTimeInSec = 30;
     public GameObject player;
     public int opponentScore;
+    public string roomStatus;
+    public int viewID;
 
     System.Random random;
     public int randomSeed;

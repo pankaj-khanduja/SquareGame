@@ -36,11 +36,30 @@ public class EditPlayerProfile : MonoBehaviour
         // Encode to PNG
         byte[] pngData = readableTexture.EncodeToPNG();
 
+        if (Constant.PlayerLogin) SaveData(pngData);
+        else LoginWithID(pngData);
+
+
+
+
+    }
+
+    void LoginWithID(byte[] pngData)
+    {
         Dictionary<string, string> customData = new Dictionary<string, string>();
         customData.Add(Constant.userName, _playerNameField.text);
         customData.Add(Constant.customID, SystemInfo.deviceUniqueIdentifier);
         customData.Add(Constant.picBase64, Convert.ToBase64String(pngData));
-        LoginController.Instance.LoginWithCustomID(customData);
+        LoginController.Instance?.LoginWithCustomID(customData);
+    }
+
+    void SaveData(byte[] pngData)
+    {
+        Dictionary<string, string> customData = new Dictionary<string, string>();
+        customData.Add(Constant.userName, _playerNameField.text);
+        customData.Add(Constant.picBase64, Convert.ToBase64String(pngData));
+        MyProfile.Instance.SaveProfileData(customData);
+        this.gameObject.SetActive(false);
 
     }
 

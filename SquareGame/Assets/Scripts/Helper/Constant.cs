@@ -23,14 +23,20 @@ namespace SquareOne
 
     public enum Scene
     {
-        MenuScene = 0,
+        LoginScene = 0,
+        MenuScene,
         GameScene
+    }
+
+    public enum LeaderboardCategory
+    {
+        Weekly = 0 ,
+        Overall
     }
 
     public static class Constant
     {
         public const string playerLoginStatus = "playerloginStatus";
-        public const string playerLoginID = "playerLoginID";
         public static float range1 = 0.1f;
         public static int duration = 10;
         public static float speed = 0.8f;
@@ -61,16 +67,57 @@ namespace SquareOne
         }
      
 
-        public static string PlayerLoginID
+        public static string PlayFabID
         {
             get
             {
-                return PlayerPrefs.GetString(playerLoginID, string.Empty);    
+                return PlayerPrefs.GetString("PlayFabID", string.Empty);    
             }
             set
             {
-                PlayerPrefs.SetString(playerLoginID, value);
+                PlayerPrefs.SetString("PlayFabID", value);
             }
+        }
+
+        public static string CustomID
+        {
+            get
+            {
+                return PlayerPrefs.GetString("customID", string.Empty);
+            }
+            set
+            {
+                PlayerPrefs.SetString("customID", value);
+            }
+        }
+
+        public static bool MuteStatus
+        {
+            get
+            {
+                return Convert.ToBoolean(PlayerPrefs.GetInt("MuteStatus", 0));
+            }
+            set
+            {
+                PlayerPrefs.SetInt("MuteStatus", Convert.ToInt32(value));
+            }
+        }
+
+        public static string GetleaderboardName(GameMode gameCategory , LeaderboardCategory leaderboardCategory)
+        {
+            if (gameCategory.Equals(GameMode.Game1) && leaderboardCategory.Equals(LeaderboardCategory.Weekly))
+                return "memory_weekly";
+            else if (gameCategory.Equals(GameMode.Game1) && leaderboardCategory.Equals(LeaderboardCategory.Overall))
+                return "memory_overall";
+            else if (gameCategory.Equals(GameMode.Game2) && leaderboardCategory.Equals(LeaderboardCategory.Weekly))
+                return "speed_weekly";
+            else if (gameCategory.Equals(GameMode.Game2) && leaderboardCategory.Equals(LeaderboardCategory.Overall))
+                return "speed_overall";
+            else if (gameCategory.Equals(GameMode.Game3) && leaderboardCategory.Equals(LeaderboardCategory.Weekly))
+                return "accuracy_weekly";
+            else 
+                return "accuracy_overall";
+           
         }
 
 

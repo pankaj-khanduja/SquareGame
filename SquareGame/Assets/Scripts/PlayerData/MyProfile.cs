@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SquareOne;
+using System;
 public class MyProfile : MonoBehaviour
 {
     public static MyProfile Instance = null;
     [HideInInspector]
     public PlayerData _PlayerData;
+    public Action OnPlayerDataLoaded;
+
     private void Awake()
     {
         if(Instance == null)
@@ -23,25 +26,31 @@ public class MyProfile : MonoBehaviour
         _PlayerData = gameObject.AddComponent<PlayerData>();
         LoadPlayerData();
     }
-    // Start is called before the first frame update
-    void Start()
+
+    public void SaveProfileData(Dictionary<string, string> customData)
     {
-        
+        LoadingComponent.instance.Enableloader();
+        PlayfabController.Instance.SaveUserData(customData, LoadPlayerData);
     }
+   
+   
 
     public void LoadPlayerData()
     {
-        _PlayerData.LoadPlayerData(Constant.PlayerLoginID, PlayerDataLoaded);
+        _PlayerData.LoadPlayerData(Constant.PlayFabID, PlayerDataLoaded);
     }
 
     public void PlayerDataLoaded()
     {
-      
+        LoadingComponent.instance.DisableLoader();
+        OnPlayerDataLoaded?.Invoke();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Logout()
     {
-        
+        PlayerPrefs.DeleteAll();
+        Constant.SwitchScene(Scene.LoginScene);
     }
+
+    
 }

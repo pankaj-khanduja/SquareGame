@@ -77,6 +77,11 @@ public class Game2 : MonoBehaviour, ISquare
     {
         SquareController.Instance.OnResetGame();
         SquareController.Instance.OnGameOver();
+
+        if(!Constant.isPlayingMulti)
+        {
+            PlayfabController.Instance.SubmitScore(SquareController.Instance.PlayerIQScore, GameMode.Game2);
+        }
         //NoOfSquares = 1;
         //SquareController.Instance.ResetIQ();
         //RoundCleared();

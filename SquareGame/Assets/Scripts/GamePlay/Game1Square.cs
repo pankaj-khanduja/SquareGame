@@ -84,6 +84,7 @@ public class Game1Square : MonoBehaviour, ISquare
         if(GameObject.Find("Line Renderer"))
         {
             Debug.Log("game Over");
+            PlayfabController.Instance.SubmitScore(SquareController.Instance.PlayerIQScore, GameMode.Game1);
             CallGameOver();
             return;
         }

@@ -28,6 +28,8 @@ public class PlayerData : MonoBehaviour
         PlayfabController.Instance.GetUSerData(loginID, OnCallBackData);
     }
 
+
+
     public void OnCallBackData(Dictionary<string, string> data)
     {
         _PlayerDataContainer = new PlayerDataContainer(data[Constant.userName], data[Constant.customID], Convert.FromBase64String(data[Constant.picBase64]));

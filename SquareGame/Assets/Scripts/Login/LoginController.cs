@@ -19,9 +19,14 @@ public class LoginController : SingletonComponent<LoginController>
             LoginPanel.SetActive(true);
             return;
         }
-        Constant.SwitchScene(Scene.MenuScene);
+        Debug.Log("Constant.PlayerLoginID   " + Constant.CustomID);
+        Dictionary<string, string> localCustomData = new Dictionary<string, string>
+        {
+            { Constant.customID, Constant.CustomID }
+        };
+        LoginWithCustomID(localCustomData);
+       
     }
-
 
     public void LoginWithCustomID(Dictionary<string, string> customData)
     {
@@ -31,7 +36,9 @@ public class LoginController : SingletonComponent<LoginController>
             CustomId = customData[Constant.customID],  // Use device unique identifier for login
             CreateAccount = true  // Automatically create an account if the player doesn't have one
         };
+
         this.customData = customData;
+        Constant.CustomID = customData[Constant.customID];
         PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
     }
 
@@ -39,8 +46,11 @@ public class LoginController : SingletonComponent<LoginController>
     private void OnLoginSuccess(LoginResult result)
     {
         Debug.Log("Successfully logged into PlayFab!"  + result.PlayFabId);
-
-        PlayfabController.Instance.SaveUserData(customData, OnUserDataSaved);
+        Constant.PlayFabID = result.PlayFabId;
+        if (!Constant.PlayerLogin)
+            PlayfabController.Instance.SaveUserData(customData, OnUserDataSaved);
+        else
+            OnUserDataSaved();
         // Optionally, you can now retrieve player information, stats, etc.
     }
 

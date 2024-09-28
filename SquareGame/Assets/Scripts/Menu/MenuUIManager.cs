@@ -21,6 +21,7 @@ public class MenuUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
         btn_Game1.onClick.AddListener(Game1Called);
         btn_Game2.onClick.AddListener(Game2Called);
         btn_Game3.onClick.AddListener(Game3Called);
@@ -103,8 +104,10 @@ public class MenuUIManager : MonoBehaviour
         
     }
 
-    public void SaveUserData()
+    public void Btn_LogoutCLicked()
     {
-
+        MyProfile.Instance?.Logout();
     }
+
+   
 }

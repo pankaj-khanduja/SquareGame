@@ -69,3 +69,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  playerName: 
+  texture: {fileID: 0}
