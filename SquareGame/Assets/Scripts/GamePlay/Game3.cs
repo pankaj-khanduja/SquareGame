@@ -29,7 +29,7 @@ public class Game3 : MonoBehaviour, ISquare
 
     public void GenerateSquare()
     {
-        
+      
         Debug.Log($"no Of Squuuar {NoOfSquares}");
        
             GameObject obj = Instantiate(SquareController.Instance.squarePrefab, Vector3.zero, Quaternion.identity);
@@ -48,8 +48,12 @@ public class Game3 : MonoBehaviour, ISquare
         {
             CallGameOver();
         }
-            // obj.tr
-        
+        if (Constant.TutorialStatus)
+        {
+            Instantiate(SquareController.Instance.PrefabTutorial);
+        }
+        // obj.tr
+
     }
 
     void CallGameOver()
@@ -88,7 +92,12 @@ public class Game3 : MonoBehaviour, ISquare
             if (isPenaltySquare)
             {
                 NoOfChances--;
-                if(SquareController.Instance.onPenatltyUpdate != null)
+                if (Application.isMobilePlatform)
+                {
+                    Handheld.Vibrate();
+                }
+
+                if (SquareController.Instance.onPenatltyUpdate != null)
                     SquareController.Instance.onPenatltyUpdate();
                 if (NoOfChances == 0)
                 {
@@ -98,6 +107,10 @@ public class Game3 : MonoBehaviour, ISquare
             }
             else
             {
+                if (Tutorial.Instance != null)
+                {
+                    Tutorial.Instance.TutoiralComplete();
+                }
                 SquareController.Instance.UpdateScore(1);
             }
 
@@ -133,7 +146,7 @@ public class Game3 : MonoBehaviour, ISquare
 
     public void MoveToNextlevel()
     {
-      
+       
         SquareController.Instance.ResetIQ();
         NoOfSquares = 3;
        
@@ -145,6 +158,7 @@ public class Game3 : MonoBehaviour, ISquare
         InvokeRepeating("ReduceRepeatingRate", timeToReduceRepeatinghRate, timeToReduceRepeatinghRate);
         InvokeRepeating("GeneratePenaltySquare", 5f, Random.Range(0.5f, 2.0f));
         new GameObject("Tap Handler").AddComponent<TapHandler>();
+
 
     }
 

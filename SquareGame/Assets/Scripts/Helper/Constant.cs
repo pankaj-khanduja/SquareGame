@@ -120,6 +120,31 @@ namespace SquareOne
            
         }
 
+        public static bool TutorialStatus
+        {
+            get
+            {
+                Debug.Log("  Constant.gameMode.ToString()   " + Constant.gameMode.ToString());
+                return Convert.ToBoolean(PlayerPrefs.GetInt(Constant.gameMode.ToString(), 1));
+            }
+            set
+            {
+                PlayerPrefs.SetInt(Constant.gameMode.ToString(), Convert.ToInt32(value));
+            }
+        }
+
+        public static string SceneTutorialText()
+        {
+            switch (Constant.gameMode)
+            {
+                case GameMode.Game1: return "Drag your finger to connect squares"; 
+                case GameMode.Game2: return "Drag your finger to connect squares"; 
+                default: return "Pop grey squares and avoid red one"; 
+
+            }
+
+        }
+
 
 
 

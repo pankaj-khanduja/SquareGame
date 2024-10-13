@@ -42,6 +42,7 @@ public class MenuUIManager : MonoBehaviour
     void Game1Called()
     {
         Constant.gameMode = GameMode.Game1;
+        Constant.gameNetwork = GameNetwok.Solo;
         LoadGameScene();
     }
 
@@ -92,6 +93,7 @@ public class MenuUIManager : MonoBehaviour
      void Game3Called()
     {
         Constant.gameMode = GameMode.Game3;
+        Constant.gameNetwork = GameNetwok.Solo;
         //if (int.TryParse(_durationInput.text, out int res)) Constant.duration = res;
         //if (float.TryParse(_speedInput.text, out float res1)) Constant.speed = res1;
         //Constant.SwitchScene(Scene.GameScene);

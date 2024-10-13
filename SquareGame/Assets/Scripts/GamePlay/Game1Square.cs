@@ -90,6 +90,10 @@ public class Game1Square : MonoBehaviour, ISquare
         }
         
         TimeLeft = NoOfSquares ;
+        if (Constant.TutorialStatus)
+        {
+            TimeLeft = 10;
+        }
         string timeText = String.Format("{0:00}:{1:000}", Mathf.FloorToInt(TimeLeft % 60), Mathf.FloorToInt((TimeLeft * 1000) % 1000));
         HighlightText = "You have\n" + timeText + "\nto connect";
         foreach (var item in SquareController.Instance.GetSquareList)
@@ -97,11 +101,16 @@ public class Game1Square : MonoBehaviour, ISquare
             item.GetComponent<SquarePrefab>().OnResetSquare();
         }
         SquareController.Instance.onTimeHighlight?.Invoke(OnAllowUserToConnect);
+       
       
     }
 
     void OnAllowUserToConnect()
     {
+        if (Constant.TutorialStatus)
+        {
+            Instantiate(SquareController.Instance.PrefabTutorial);
+        }
         new GameObject("Line Renderer").AddComponent<LineRendererManager>();
         SquareController.Instance.onGameBegin?.Invoke();
     }
@@ -122,7 +131,15 @@ public class Game1Square : MonoBehaviour, ISquare
         if (obj.GetComponent<SquarePrefab>().squareData.number == connectingNumber)
         {
             if (!isSquare2) connectingNumber++;
-            else SquareController.Instance.UpdateScore(1);
+            else
+            {
+                if(Tutorial.Instance != null)
+                {
+                    Tutorial.Instance.TutoiralComplete();
+                }
+                SquareController.Instance.UpdateScore(1);
+            }
+              
             obj.GetComponent<SquarePrefab>().OnUserResponse(true);
            
             return true;

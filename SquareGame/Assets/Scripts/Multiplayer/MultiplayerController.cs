@@ -47,7 +47,7 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
     // note: when a client joins / creates a room, OnLeftLobby does not get called, even if the client was in a lobby before
     public override void OnLeftLobby()
     {
-      
+        Debug.Log("   OnLeftLobby  ");
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
@@ -89,14 +89,14 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         SquareController.Instance.roomStatus = "New Player Joined";
-        if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
+        if (PhotonNetwork.CurrentRoom.PlayerCount == 2 && PhotonNetwork.IsMasterClient)
             this.photonView.RPC("OnGameStart", RpcTarget.All, SquareController.Instance.randomSeed);
 
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-       
+        Debug.Log("   OnPlayerLeftRoom  ");
     }
 
     public override void OnMasterClientSwitched(Player newMasterClient)

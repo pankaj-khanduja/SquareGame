@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     public GameObject squareDisplayObj;
     public GameObject timeHighlightObj;
     public GameObject LifeControllerObj;
-    public GameObject InGameCanvas, WaitingCanvas , MultiScoreView;
+    public GameObject InGameCanvas, WaitingCanvas , MultiScoreView , CountdownMultObj;
     bool gameOn = false;
     // public 
     // Start is called before the first frame update
@@ -29,18 +29,21 @@ public class UIManager : MonoBehaviour
         else SquareController.Instance.onGameBegin += SquareGenerated;
 
         SquareController.Instance.Action_OnMultiplayerStart = EnableMultiCanvas;
+        SquareController.Instance.Action_OnAllPlayerReady = EnableMultiCountdown;
         SquareController.Instance.onTimeHighlight += TimeDisplayCounter;
         SquareController.Instance.onUserUpdate += OnUserUpdate;
         SquareController.Instance.onLevelCleared += LevelCleared;
-        SquareController.Instance.Game1();
+        SquareController.Instance.Action_LoadINGameUI += LoadInGameUI;
+
         playerIQScore.text = "IQ : 0";
         LifeControllerObj.SetActive(true);
 
-        if(!Constant.isPlayingMulti)
+        if(Constant.gameNetwork == GameNetwok.Solo)
         {
-            InGameCanvas.SetActive(true);
+            CountdownMultObj.SetActive(true);
         }else
         {
+            SquareController.Instance.Game1();
             WaitingCanvas.SetActive(true);
             playerIQScore.enabled = false;
             MultiScoreView.SetActive(true);
@@ -48,10 +51,20 @@ public class UIManager : MonoBehaviour
 
     }
 
-    void EnableMultiCanvas()
+    void LoadInGameUI()
     {
         InGameCanvas.SetActive(true);
+    }
+
+    void EnableMultiCanvas()
+    {
+       
         WaitingCanvas.SetActive(false);
+    }
+
+    void EnableMultiCountdown()
+    {
+        CountdownMultObj.SetActive(true);
     }
 
     private void OnDisable()
@@ -63,6 +76,7 @@ public class UIManager : MonoBehaviour
         SquareController.Instance.onTimeHighlight -= TimeDisplayCounter;
         SquareController.Instance.onUserUpdate -= OnUserUpdate;
         SquareController.Instance.onLevelCleared -= LevelCleared;
+        SquareController.Instance.Action_LoadINGameUI -= LoadInGameUI;
     }
 
     void OnUserUpdate()

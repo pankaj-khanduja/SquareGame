@@ -33,14 +33,16 @@ public class SquareController : SingletonComponent<SquareController>
     public Vector2 screenBounds;
     public Color _timerTextColor;
     public GameObject EncouragingText;
-    public Action onAction , Action_OnMultiplayerStart ;
+    public Action onAction , Action_OnMultiplayerStart , Action_OnAllPlayerReady ;
     public Action<string, Texture2D> Action_OnOpponentDataReceived , Action_OnLocalPlayerDataReceived;
+    public Action Action_LoadINGameUI;
     public bool isGameOver = false;
     public float multiWaitingTimeInSec = 30;
     public GameObject player;
     public int opponentScore;
     public string roomStatus;
     public int viewID;
+    public GameObject PrefabTutorial;
 
     System.Random random;
     public int randomSeed;
@@ -78,8 +80,8 @@ public class SquareController : SingletonComponent<SquareController>
             new GameObject("Multiplayer Controller").AddComponent<MultiplayerController>();
         }
         else
-            StartGame2();
-        
+            _iSquareManager = gameObject.AddComponent<Game2>();
+
     }
 
     public void SetMasterSeed(int seed)
@@ -88,11 +90,21 @@ public class SquareController : SingletonComponent<SquareController>
         random = new System.Random(randomSeed);
     }
 
-    public void StartGame2()
+    public void StartGame()
     {
-        _iSquareManager = gameObject.AddComponent<Game2>();
+        Action_LoadINGameUI?.Invoke();
+        if (Constant.gameNetwork == GameNetwok.Multi)
+        {
+            _iSquareManager = gameObject.AddComponent<Game2>();
+        }
+        else
+        {
+            Game1();
+        }
         Debug.Log("   testettetette  ");
     }
+
+
 
     public void RestartGame()
     {

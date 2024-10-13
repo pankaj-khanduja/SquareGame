@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Facebook.Unity;
@@ -82,7 +84,11 @@ public class FB_Inteface : MonoBehaviour {
 
 	void SetUserDisplayPic(Texture2D pic){
 		playerPic = pic;
-		_CallBackAfterLogged();
+        Dictionary<string, string> customData = new Dictionary<string, string>();
+        customData.Add(Constant.userName, PlayerName);
+        customData.Add(Constant.customID, playerId);
+        customData.Add(Constant.picBase64, Convert.ToBase64String(playerPic.EncodeToPNG()));
+		LoginController.Instance.LoginWithCustomID(customData);
 	}
 
 	void SetFriendsList(ArrayList F_List){
@@ -136,10 +142,6 @@ public class FB_Inteface : MonoBehaviour {
 	{
 		Constant.SwitchScene(Scene.MenuScene);
 	}
-
-
-
-
 
 
 }

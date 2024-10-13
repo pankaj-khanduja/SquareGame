@@ -1,3 +1,5 @@
+/*
+
 using System.Collections;
 using System.Collections.Generic;
 using Facebook.Unity;
@@ -54,3 +56,4 @@ public class FBHelperScript : MonoBehaviour
 
 
 }
+*/

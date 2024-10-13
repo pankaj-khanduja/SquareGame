@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Facebook.Unity;
@@ -23,7 +25,7 @@ public class FB_SingletonClass : MonoBehaviour {
 	
 	public void Fetch_FB_User_Data(){
 		FB.API("/me", HttpMethod.GET, this.UserCallBack);	
-		FB.API ("/me/picture?width=100&height=100", HttpMethod.GET, this.ProfilePhotoCallback);
+		
 //		FB.API("/me/friends", HttpMethod.GET, OnFriendsDownloaded);
 
 	}
@@ -31,13 +33,13 @@ public class FB_SingletonClass : MonoBehaviour {
 	void UserCallBack(IResult result) {
 		if (!string.IsNullOrEmpty(result.RawResult))
 		{   
-			Debug.Log ("com.tengaming.test   ");
 			string playerName = result.ResultDictionary["name"].ToString();
 			string playerid = result.ResultDictionary["id"].ToString();
 			Fb_UserName(playerName,playerid );
 			FB.ActivateApp();
-			
-		}
+            FB.API("/me/picture?width=100&height=100", HttpMethod.GET, this.ProfilePhotoCallback);
+
+        }
 
 	}
 

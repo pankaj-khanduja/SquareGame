@@ -24,6 +24,7 @@ public class SquarePrefab : MonoBehaviour
     [SerializeField] private SpriteRenderer sprite , outlineSprite;
     [SerializeField] private TextMeshPro textMesh;
     [SerializeField] GameObject _ParticleEffect , _RedParticleEfffect , _CorrectRetainSpriteParticle;
+    public GameObject RedAlertPanel;
     public SquareData squareData;
     int numberOflines = 0;
     bool isMove = false;
@@ -93,7 +94,6 @@ public class SquarePrefab : MonoBehaviour
     {
         int indexX = Random.Range(0, 2);
         int indexY = Random.Range(0, 2);
-        Debug.Log("  index  " + indexX + "  index Y " + indexY);
         squareData.direction = new Vector3(Constant.directionMode[indexX], Constant.directionMode[indexY], 0); // Diagonal movement
         //targetPosition = SquareController.Instance.GenerateSpriteAtPos(this.gameObject, true);
         isMove = true;
@@ -110,6 +110,7 @@ public class SquarePrefab : MonoBehaviour
         else
         {
             DisableSprite(_RedParticleEfffect);
+            Instantiate(RedAlertPanel);
         }
         
     }

@@ -22,7 +22,7 @@ public class Chances : MonoBehaviour
 
     void OnInitializeLifes()
     {
-        Debug.Log("  chancess  " + SquareController.Instance.GetManager().NoOfChances);
+    
         while (lifeObj.Count > 0)
         {
             GameObject obj = lifeObj.Pop();

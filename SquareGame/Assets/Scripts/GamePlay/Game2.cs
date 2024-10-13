@@ -49,12 +49,16 @@ public class Game2 : MonoBehaviour, ISquare
         SquareController.Instance.ResetIQ();
         RoundCleared();
         SquareController.Instance.onGameBegin?.Invoke();
+        if (Constant.TutorialStatus && Constant.gameNetwork == GameNetwok.Solo)
+        {
+            Instantiate(SquareController.Instance.PrefabTutorial);
+        }
     }
 
     public void GenerateSquare()
     {
        
-        Debug.Log($"no Of Squuuar {NoOfSquares}");
+        
         for (int count = 0; count < NoOfSquares; count++)
         {
             GameObject obj = Instantiate(SquareController.Instance.squarePrefab, Vector3.zero, Quaternion.identity);
@@ -105,11 +109,20 @@ public class Game2 : MonoBehaviour, ISquare
         {
             return false;
         }
-        Debug.Log($" Connecting Numer {connectingNumber} and selected square {obj.GetComponent<SquarePrefab>().squareData.number}");
+      
         if (obj.GetComponent<SquarePrefab>().squareData.number == connectingNumber)
         {
             if (!isSquare2) connectingNumber++;
-            else SquareController.Instance.UpdateScore(1);
+            else
+            {
+                if (Tutorial.Instance != null)
+                {
+                    Tutorial.Instance.TutoiralComplete();
+                }
+                SquareController.Instance.UpdateScore(1);
+            }
+
+               
             obj.GetComponent<SquarePrefab>().OnUserResponse(true);
             return true;
         }

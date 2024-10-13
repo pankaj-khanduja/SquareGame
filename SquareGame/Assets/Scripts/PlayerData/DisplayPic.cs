@@ -28,6 +28,7 @@ public class DisplayPic : MonoBehaviour
     {
         if (MyProfile.Instance == null) return;
         Texture2D tex = MyProfile.Instance._PlayerData._PlayerDataContainer.userPic;
+        if (tex == null) return;
         Sprite newSprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f));
         userPicImage.sprite = newSprite;
     }

@@ -461,6 +461,7 @@ MonoBehaviour:
   _ParticleEffect: {fileID: 690576289902395196}
   _RedParticleEfffect: {fileID: 3859970103301357456}
   _CorrectRetainSpriteParticle: {fileID: 986034116299161204}
+  RedAlertPanel: {fileID: 8681576037143117703, guid: 60a5461904a834b43ae03fe62b7c6731, type: 3}
 --- !u!1001 &690576289902526976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1017,6 +1018,10 @@ PrefabInstance:
     - target: {fileID: 460146, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244428, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
+      propertyPath: m_Volume
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 19831162, guid: 64213efe87b202141b44b6a613b892e9, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b

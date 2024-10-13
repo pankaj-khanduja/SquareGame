@@ -33,7 +33,7 @@ public class PlayerObj : MonoBehaviourPun, IPunObservable
             };
             photonViewX.RPC("PlayerData", RpcTarget.Others, sendingData);
             SquareController.Instance.Action_OnLocalPlayerDataReceived.Invoke(playerName, texture);
-            Debug.Log("Datatatattata");
+            Debug.Log("Sharing Own Data");
             
         }
     }
@@ -48,6 +48,40 @@ public class PlayerObj : MonoBehaviourPun, IPunObservable
         texture.LoadImage(picByte);
         texture.Apply();
         SquareController.Instance.Action_OnOpponentDataReceived.Invoke(playerName , texture);
+        Debug.Log("Receiving oppo Data");
+
+        ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
+        playerProperties["ReadyKey"] = true;  // Set the ready status in player properties
+        PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
+        _ = StartCoroutine(nameof(CheckAllPlayerReady));
+
+    }
+
+    IEnumerator CheckAllPlayerReady()
+    {
+        bool isAllPlayerReady = false;
+        while(!isAllPlayerReady)
+        {
+            yield return null;
+            bool isAnyPlayerLeftTobeReady = false;
+            foreach (Player player in PhotonNetwork.PlayerList)
+            {
+                if (!player.CustomProperties.ContainsKey("ReadyKey") || !(bool)player.CustomProperties["ReadyKey"])
+                {
+                    isAnyPlayerLeftTobeReady = true;
+                    // At least one player is not ready
+                    Debug.Log(player.NickName + " is not ready");
+                    break;
+                }
+            }
+            if(!isAnyPlayerLeftTobeReady) isAllPlayerReady = true;
+
+        }
+
+        if(isAllPlayerReady)
+        {
+            SquareController.Instance.Action_OnAllPlayerReady?.Invoke();
+        }
     }
 
 
@@ -59,9 +93,8 @@ public class PlayerObj : MonoBehaviourPun, IPunObservable
         {
             SquareController.Instance.SetMasterSeed(seed);
         }
+        Debug.Log("   OnGameStart " + photonViewX.IsMine);
         SquareController.Instance.Action_OnMultiplayerStart?.Invoke();
-        SquareController.Instance.StartGame2();
-        Debug.Log("    ===========   =======  " + photonViewX.IsMine);
         if (photonViewX.IsMine)
             SharePlayerData();
         else
@@ -113,6 +146,7 @@ public class PlayerObj : MonoBehaviourPun, IPunObservable
         {
             // We are receiving data
             score = (int)stream.ReceiveNext();
+            Debug.Log("Received Socre from Oppo" + score);
         }
     }
 }
