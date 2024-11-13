@@ -59,7 +59,15 @@ public class Game3 : MonoBehaviour, ISquare
     void CallGameOver()
     {
 
-        PlayfabController.Instance.SubmitScore(SquareController.Instance.PlayerIQScore, GameMode.Game3);
+        try
+        {
+            PlayfabController.Instance.SubmitScore(SquareController.Instance.PlayerIQScore, GameMode.Game3);
+        }
+        catch (System.Exception ex)
+        {
+            GameObject obj = Instantiate(SquareController.Instance.ScoreUpdateForm);
+            obj.GetComponent<CloseScript>().Updatetext("Playfab not exist");
+        }
         CancelInvoke();
         SquareController.Instance.OnResetGame();
         SquareController.Instance.OnGameOver();
@@ -88,6 +96,10 @@ public class Game3 : MonoBehaviour, ISquare
         try
         {
             bool isPenaltySquare = obj.GetComponent<SquarePrefab>().squareData.isPenaltySquare;
+            if(isPenaltySquare)
+            {
+                obj.GetComponent<SquarePrefab>().ShowRedAlert();
+            }
             obj.GetComponent<SquarePrefab>().DestroySquare();
             if (isPenaltySquare)
             {

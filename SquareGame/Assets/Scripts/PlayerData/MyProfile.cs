@@ -12,13 +12,13 @@ public class MyProfile : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if(Instance != null)
         {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            Destroy(this.gameObject);
             return;
         }
-        Destroy(this.gameObject);
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void OnEnable()
@@ -48,8 +48,9 @@ public class MyProfile : MonoBehaviour
 
     public void Logout()
     {
-        PlayerPrefs.DeleteAll();
-        Constant.SwitchScene(Scene.LoginScene);
+        
+        Destroy(this.gameObject);
+        
     }
 
     

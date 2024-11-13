@@ -16,6 +16,7 @@ public class PlayfabController : MonoBehaviour
     public Action<Dictionary<string, string>> onCallBaack;
     public Action<List<PlayerLeaderboardEntry>> onLeaderboaardDataLoaded;
     public Action onDataSaveCallback;
+    public GameObject ScoreUpdateForm;
     private void Awake()
     {
         if(Instance == null)
@@ -97,17 +98,115 @@ public class PlayfabController : MonoBehaviour
 
     public void SubmitScore(int score, GameMode gameMode)
     {
-        StartCoroutine(SubmitScoreAsync( score, gameMode));
+        UpdatePlayerHighestScore(score, Constant.GetleaderboardName(gameMode, LeaderboardCategory.Weekly), Constant.GetleaderboardName(gameMode, LeaderboardCategory.Overall));
+        //StartCoroutine(SubmitScoreAsync( score, gameMode));
     }
 
     IEnumerator SubmitScoreAsync(int score, GameMode gameMode)
     {
-        SubmitScoreToServer(score, Constant.GetleaderboardName(gameMode, LeaderboardCategory.Weekly));
-        yield return new WaitForSeconds(0.2f);
-        SubmitScoreToServer(score, Constant.GetleaderboardName(gameMode, LeaderboardCategory.Overall));
+        UpdatePlayerHighestScore(score, Constant.GetleaderboardName(gameMode, LeaderboardCategory.Weekly), Constant.GetleaderboardName(gameMode, LeaderboardCategory.Overall));
+        yield return new WaitForSeconds(0.1f);
+        //UpdatePlayerHighestScore(score, Constant.GetleaderboardName(gameMode, LeaderboardCategory.Overall));
     }
 
-     void SubmitScoreToServer(int score , string leaderboardName)
+    void UpdatePlayerHighestScore(int newScore ,  string leaderboardName ,  string leaderboardName2)
+    {
+
+        //var request = new UpdatePlayerStatisticsRequest
+        //{
+        //    Statistics = new List<StatisticUpdate>
+        //            {
+        //                new StatisticUpdate
+        //                {
+        //                    StatisticName = leaderboardName,
+        //                    Value = newScore
+        //                },
+        //                new StatisticUpdate
+        //                {
+        //                    StatisticName = leaderboardName2, // Second leaderboard statistic
+        //                     Value = newScore
+        //                }
+        //            }
+        //};
+
+        ////PlayFabClientAPI.UpdatePlayerStatistics(request, OnSubmitScoreSuccess, OnSubmitScoreFailure);
+
+        //int currentHighScore = PlayerPrefs.GetInt(String.Join(" ",Constant.PlayFabID, leaderboardName), 0);
+        //Debug.Log("  currentHighScore   " + currentHighScore  +"    playfabID    "+ String.Join(" ", Constant.PlayFabID, leaderboardName)) ;
+        ////OpenSocreForm("Request Received to submit score " + newScore +"  previous High Score "+ currentHighScore  +"  ID "+ String.Join(" ", Constant.PlayFabID, leaderboardName));
+        //if (newScore > currentHighScore)
+        //{
+        //    PlayerPrefs.SetInt(String.Join(" ", Constant.PlayFabID, leaderboardName), newScore);
+        //    var request = new UpdatePlayerStatisticsRequest
+        //    {
+        //        Statistics = new List<StatisticUpdate>
+        //            {
+        //                new StatisticUpdate
+        //                {
+        //                    StatisticName = leaderboardName,
+        //                    Value = newScore
+        //                },
+        //                new StatisticUpdate
+        //                {
+        //                    StatisticName = leaderboardName2, // Second leaderboard statistic
+        //                     Value = newScore
+        //                }
+        //            }
+        //    };
+        //    OpenSocreForm("Sending Request " );
+        //    PlayFabClientAPI.UpdatePlayerStatistics(request, OnSubmitScoreSuccess, OnSubmitScoreFailure);
+        //}
+
+
+        int currentHighScore = 0;
+        PlayFabClientAPI.GetPlayerStatistics(new GetPlayerStatisticsRequest(), result =>
+        {
+          
+            // Check if the player already has a score recorded
+            foreach (var stat in result.Statistics)
+            {
+                if (stat.StatisticName == leaderboardName)
+                {
+                    currentHighScore = stat.Value;
+                    break;
+                }
+            }
+            string score = "previous high score " + currentHighScore + "  new score " + newScore;
+            //OpenSocreForm(score);
+            // Only update if the new score is higher
+            if (newScore > currentHighScore)
+            {
+                var request = new UpdatePlayerStatisticsRequest
+                {
+                    Statistics = new List<StatisticUpdate>
+                    {
+                        new StatisticUpdate
+                        {
+                            StatisticName = leaderboardName,
+                            Value = newScore
+                        },
+                        new StatisticUpdate
+                        {
+                            StatisticName = leaderboardName2, // Second leaderboard statistic
+                             Value = newScore
+                        }
+                    }
+                };
+
+                PlayFabClientAPI.UpdatePlayerStatistics(request, OnSubmitScoreSuccess, OnSubmitScoreFailure);
+            }
+           
+        }, error => { OpenSocreForm("Error getting player statistics");  Debug.LogError("Error getting player statistics: " + error.GenerateErrorReport()); });
+    }
+
+    void OpenSocreForm(string msg)
+    {
+        GameObject obj = Instantiate(ScoreUpdateForm);
+        obj.GetComponent<CloseScript>().Updatetext(msg);
+    }
+
+
+    void SubmitScoreToServer(int score , string leaderboardName)
     {
         var request = new UpdatePlayerStatisticsRequest
         {
@@ -126,11 +225,13 @@ public class PlayfabController : MonoBehaviour
 
     private void OnSubmitScoreSuccess(UpdatePlayerStatisticsResult result)
     {
+        OpenSocreForm("Successfully submitted score to leaderboard");
         Debug.Log("Successfully submitted score to leaderboard!");
     }
 
     private void OnSubmitScoreFailure(PlayFabError error)
     {
+        OpenSocreForm("Failed "+ error.GenerateErrorReport());
         Debug.LogError("Failed to submit score: " + error.GenerateErrorReport());
     }
 
@@ -185,6 +286,11 @@ public class PlayfabController : MonoBehaviour
     private void OnUpdateDisplayNameFailure(PlayFabError error)
     {
         Debug.LogError("Failed to update display name: " + error.GenerateErrorReport());
+    }
+
+    public void DestroyController()
+    {
+        Destroy(this.gameObject);
     }
 
 }

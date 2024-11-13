@@ -13,6 +13,7 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
     void Start()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.GameVersion = "1";
         PhotonNetwork.ConnectUsingSettings();
       
     }
@@ -29,6 +30,7 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
     {
         Debug.Log("  OnConnectedToMaster ");
         //photonView = PhotonView.Get(this);
+        //PhotonNetwork.JoinRoom("3620");
         PhotonNetwork.JoinRandomRoom();
         SquareController.Instance.roomStatus = "Searching for room";
     }
@@ -57,17 +59,20 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-       
+        Debug.Log("  OnJoinRoomFailed    " + message);
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
+        Debug.Log("  OnJoinRandomFailed    " + message);
         SquareController.Instance.roomStatus = "Creating room";
         string roomName = "Room " + Random.Range(1000, 10000);
 
-        RoomOptions options = new RoomOptions { MaxPlayers = 2};
-
-        PhotonNetwork.CreateRoom(roomName, options, null);
+        RoomOptions options = new RoomOptions { MaxPlayers = 2 , IsVisible = true,
+            IsOpen = true
+        };
+        Debug.Log("roomName   " + roomName);
+        PhotonNetwork.CreateRoom(null, options, null);
     }
 
     public override void OnJoinedRoom()
@@ -77,6 +82,8 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
         GameObject pl = PhotonNetwork.Instantiate(SquareController.Instance.player.name, Vector3.zero , Quaternion.identity);
         photonView = pl.GetComponent<PhotonView>();
         SquareController.Instance.viewID = photonView.ViewID;
+        Debug.Log("photon name " + PhotonNetwork.CurrentRoom.Name + "   is IsVisible " + PhotonNetwork.CurrentRoom.IsVisible);
+        Debug.Log("photon IsOpen " + PhotonNetwork.CurrentRoom.IsOpen + "   is PlayerCount " + PhotonNetwork.CurrentRoom.PlayerCount);
         // joining (or entering) a room invalidates any cached lobby room list (even if LeaveLobby was not called due to just joining a room)
 
     }
@@ -113,7 +120,7 @@ public class MultiplayerController : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.Disconnect();
     }
-
+   
 
 
     #endregion

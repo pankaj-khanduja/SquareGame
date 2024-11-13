@@ -7,6 +7,8 @@ using Facebook.Unity;
 using System;
 using UnityEngine.UI;
 using SquareOne;
+using System.Threading;
+
 public class FB_Inteface : MonoBehaviour {
 	public static FB_Inteface _instance = null;
 	string PlayerName,playerId ;
@@ -34,8 +36,7 @@ public class FB_Inteface : MonoBehaviour {
 		FriendsList = new ArrayList ();
 
 		_Fb_Singleton = new FB_SingletonClass ();
-		FB_SingletonClass.Fb_UserName += SetCallback;
-		FB_SingletonClass.Fb_User_DP += SetUserDisplayPic;
+	
 //		FB_SingletonClass.Fb_Friends_List += SetFriendsList;
 	}
 	// Use this for initialization
@@ -47,8 +48,19 @@ public class FB_Inteface : MonoBehaviour {
 	void Update () {
 		
 	}
-	//======================================== Facebook Getter Methods =============================//
-	public string GetPlayerFB_UserName(){
+
+    private void OnEnable()
+    {
+        FB_SingletonClass.Fb_UserName += SetCallback;
+        FB_SingletonClass.Fb_User_DP += SetUserDisplayPic;
+    }
+    private void OnDisable()
+    {
+        FB_SingletonClass.Fb_UserName -= SetCallback;
+        FB_SingletonClass.Fb_User_DP -= SetUserDisplayPic;
+    }
+    //======================================== Facebook Getter Methods =============================//
+    public string GetPlayerFB_UserName(){
 		return PlayerName;
 	}
 	public Texture2D GetPlayerDP(){
@@ -107,10 +119,20 @@ public class FB_Inteface : MonoBehaviour {
 	public void LoginToFb(){
 //		if (InternetConnection.CheckInternet.IsInternetActive ()) {
 		if (!FB.IsLoggedIn) {
-			FB.Init (this.OnInitComplete, this.OnHideUnity);
+			
 		}
-//		} 
-	}
+        //		}
+        //
+
+        if (!FB.IsInitialized)
+        {
+            FB.Init(this.OnInitComplete, this.OnHideUnity);
+        }
+        else
+        {
+            OnInitComplete();
+        }
+    }
 
 	private void OnInitComplete()
 	{
@@ -124,7 +146,8 @@ public class FB_Inteface : MonoBehaviour {
 	{
 		if (FB.IsInitialized) {
 			_Fb_Singleton.Fetch_FB_User_Data ();
-		}
+             FB.ActivateApp();
+        }
 	}
 
 	public void OnFBInvite_Clicked(){
@@ -136,6 +159,16 @@ public class FB_Inteface : MonoBehaviour {
 	{
 		Debug.Log ("Sent Request");
 		//GameObject.Find ("SignIn").GetComponent<Text> ().text ="Successfull";
+	}
+
+	public void Logout()
+	{
+		if(FB.IsLoggedIn)
+		{
+			FB.LogOut();
+		}
+		Debug.Log("  Desstroy  FB  ");
+		Destroy(this.gameObject);
 	}
 
 	public void Loadscene()

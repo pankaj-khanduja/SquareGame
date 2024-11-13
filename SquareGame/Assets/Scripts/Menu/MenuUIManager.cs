@@ -8,6 +8,8 @@ using System;
 using EasyTransition;
 using SquareOne;
 using PlayFab;
+using GoogleMobileAds.Api;
+using SquareOne;
 public class MenuUIManager : MonoBehaviour
 {
     public Button btn_Game1 , btn_Game2 , btn_Game3 , btn_Play , btn_Play1 , btn_Solo , btn_Multi;
@@ -32,6 +34,7 @@ public class MenuUIManager : MonoBehaviour
 
         GameObject obj = Constant.PlayerLogin ? MenuPanel : LoginPanel;
         obj.SetActive(true);
+        MobileAds.Initialize(initStatus => { });
 
     }
 
@@ -108,7 +111,17 @@ public class MenuUIManager : MonoBehaviour
 
     public void Btn_LogoutCLicked()
     {
+        
+        PlayfabController.Instance.DestroyController();
+        FB_Inteface._instance.Logout();
         MyProfile.Instance?.Logout();
+        Constant.PlayerLogin = false;
+        Constant.SwitchScene(SquareOne.Scene.LoginScene);
+    }
+
+    public void OpenFBPolicy()
+    {
+        Application.OpenURL("https://policyurlset.s3.amazonaws.com/SquareSmash/index+policy.html");
     }
 
    

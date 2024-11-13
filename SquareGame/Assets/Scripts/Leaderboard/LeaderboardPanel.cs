@@ -8,7 +8,8 @@ using PlayFab.ClientModels;
 public class LeaderboardPanel : MonoBehaviour
 {
     public GameObject leaderboardPrefab;
-    public Transform Content;
+    public RectTransform Content;
+
     public GameObject ownPlayerData;
     public Button Btn_Memory, Btn_Speed, Btn_Accuracy , Btn_Weekly , Btn_Overall;
     GameMode leaderboardMode;
@@ -45,6 +46,7 @@ public class LeaderboardPanel : MonoBehaviour
         DestrroyAllData();
         leaderboardData = new List<GameObject>();
         ownPlayerData.GetComponent<PlayerScore>().ResetData();
+        Content.sizeDelta = new Vector2(Content.sizeDelta.x, 300);
         PlayfabController.Instance.GetLeaderboardData(Constant.GetleaderboardName(leaderboardMode, leaderboardCategory) , OnLeaderboardDataLoaded);
 
 
@@ -56,6 +58,7 @@ public class LeaderboardPanel : MonoBehaviour
         {
             GameObject obj =  Instantiate(leaderboardPrefab);
             obj.transform.SetParent(Content.transform);
+            Content.sizeDelta = new Vector2(Content.sizeDelta.x, Content.sizeDelta.y + 125);
             obj.GetComponent<PlayerScore>().DisplayData(entry);
             leaderboardData.Add(obj);
             Debug.Log($"Player: {entry.DisplayName}, Rank: {entry.Position}, Score: {entry.StatValue}");

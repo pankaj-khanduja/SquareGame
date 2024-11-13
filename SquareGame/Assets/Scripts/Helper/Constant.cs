@@ -25,7 +25,8 @@ namespace SquareOne
     {
         LoginScene = 0,
         MenuScene,
-        GameScene
+        GameScene,
+        ReloginScene
     }
 
     public enum LeaderboardCategory
@@ -106,17 +107,18 @@ namespace SquareOne
         public static string GetleaderboardName(GameMode gameCategory , LeaderboardCategory leaderboardCategory)
         {
             if (gameCategory.Equals(GameMode.Game1) && leaderboardCategory.Equals(LeaderboardCategory.Weekly))
-                return "memory_weekly";
+                return "memory_weekly_new";
             else if (gameCategory.Equals(GameMode.Game1) && leaderboardCategory.Equals(LeaderboardCategory.Overall))
-                return "memory_overall";
+                return "memory_overall_new";
             else if (gameCategory.Equals(GameMode.Game2) && leaderboardCategory.Equals(LeaderboardCategory.Weekly))
-                return "speed_weekly";
+                return "speed_weekly_new";
             else if (gameCategory.Equals(GameMode.Game2) && leaderboardCategory.Equals(LeaderboardCategory.Overall))
-                return "speed_overall";
+                return "speed_overall_new";
             else if (gameCategory.Equals(GameMode.Game3) && leaderboardCategory.Equals(LeaderboardCategory.Weekly))
-                return "accuracy_weekly";
-            else 
-                return "accuracy_overall";
+                return "accuracy_weekly_new";
+            else if (gameCategory.Equals(GameMode.Game3) && leaderboardCategory.Equals(LeaderboardCategory.Overall))
+                return "accuracy_overall_new";
+            return "accuracy_overall_new";
            
         }
 

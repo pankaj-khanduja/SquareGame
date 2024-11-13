@@ -43,9 +43,10 @@ public class SquareController : SingletonComponent<SquareController>
     public string roomStatus;
     public int viewID;
     public GameObject PrefabTutorial;
-
     System.Random random;
     public int randomSeed;
+    public int gameOverCount = 0;
+    public GameObject ScoreUpdateForm;
     // Start is called before the first frame update
     void Start()
     {
@@ -111,6 +112,8 @@ public class SquareController : SingletonComponent<SquareController>
         isGameOver = false;
         _iSquareManager.OnRestartGame();
         onRestart();
+       
+
     }
 
     public void OnGameOver()
@@ -118,6 +121,16 @@ public class SquareController : SingletonComponent<SquareController>
         SquareController.Instance.onLevelCleared?.Invoke();
         isGameOver = true;
         GameOverPanel.SetActive(true);
+        gameOverCount++;
+        if (gameOverCount == 2)
+        {
+            if (AdmobController.Instance != null && AdmobController.Instance.ShowInterstitialAd())
+            {
+                gameOverCount = 0;
+            }
+            else
+                gameOverCount = 1;
+        }
     }
 
     public void ResetIQ()
@@ -194,7 +207,7 @@ public class SquareController : SingletonComponent<SquareController>
         Vector2 randomScreenPosition ;
         if (Constant.isPlayingMulti)
         {
-            randomScreenPosition = new Vector2(random.Next(100, (Screen.width - 100)), random.Next(100, (Screen.height - 250)));
+            randomScreenPosition = new Vector2(random.Next(100, (Screen.width - 100)), random.Next(100, (Screen.height - 350)));
         }else
             randomScreenPosition = new Vector2(UnityEngine.Random.Range(100, (Screen.width - 100)), UnityEngine.Random.Range(100, (Screen.height - 250)));
 

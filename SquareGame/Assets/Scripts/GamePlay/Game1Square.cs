@@ -84,7 +84,14 @@ public class Game1Square : MonoBehaviour, ISquare
         if(GameObject.Find("Line Renderer"))
         {
             Debug.Log("game Over");
-            PlayfabController.Instance.SubmitScore(SquareController.Instance.PlayerIQScore, GameMode.Game1);
+            try
+            {
+                PlayfabController.Instance.SubmitScore(SquareController.Instance.PlayerIQScore, GameMode.Game1);
+            }catch(System.Exception ex)
+            {
+                GameObject obj = Instantiate( SquareController.Instance.ScoreUpdateForm);
+                obj.GetComponent<CloseScript>().Updatetext("Playfab not exist");
+            }
             CallGameOver();
             return;
         }
@@ -104,6 +111,8 @@ public class Game1Square : MonoBehaviour, ISquare
        
       
     }
+
+ 
 
     void OnAllowUserToConnect()
     {
@@ -151,6 +160,7 @@ public class Game1Square : MonoBehaviour, ISquare
         if (NoOfChances == 0)
         {
             Debug.Log(" GAme Reset");
+            PlayfabController.Instance.SubmitScore(SquareController.Instance.PlayerIQScore, GameMode.Game1);
             CallGameOver();
         }
         return false;

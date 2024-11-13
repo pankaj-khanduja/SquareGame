@@ -73,7 +73,7 @@ public class SquarePrefab : MonoBehaviour
     {
         if (!isMove) return;
             transform.Translate(squareData.direction * speed * Time.deltaTime);
-        Debug.Log("transform.position    " + transform.position);
+
 
         //Horizontal boundaries
         if (transform.position.x > SquareController.Instance.screenBounds.x - 0.5f || transform.position.x < -SquareController.Instance.screenBounds.x + 0.5f)
@@ -110,10 +110,16 @@ public class SquarePrefab : MonoBehaviour
         else
         {
             DisableSprite(_RedParticleEfffect);
-            Instantiate(RedAlertPanel);
         }
         
     }
+
+    public void ShowRedAlert()
+    {
+        Instantiate(RedAlertPanel);
+    }
+
+
 
     void DisableSprite(GameObject obj)
     {

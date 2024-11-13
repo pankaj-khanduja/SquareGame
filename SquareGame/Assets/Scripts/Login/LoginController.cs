@@ -64,8 +64,14 @@ public class LoginController : SingletonComponent<LoginController>
     public void OnUserDataSaved()
     {
         LoadingComponent.instance.DisableLoader();
-        Constant.PlayerLogin = (true);
+        Constant.PlayerLogin = true;
         Constant.SwitchScene(Scene.MenuScene);
+    }
+
+    public void LoginToFB()
+    {
+        if(FB_Inteface._instance != null)
+            FB_Inteface._instance.LoginToFb();
     }
 
    

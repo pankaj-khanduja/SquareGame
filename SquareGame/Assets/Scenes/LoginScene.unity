@@ -212,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 802e80492acd14fafbff615f8cac6cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreUpdateForm: {fileID: 6067541805604621522, guid: fed21321d68ac4c3f8ca131476838a72, type: 3}
 --- !u!1 &694282867
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,6 +333,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoginPanel: {fileID: 1063665124}
+--- !u!1 &1035083515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1035083517}
+  - component: {fileID: 1035083516}
+  m_Layer: 0
+  m_Name: FBInterface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1035083516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035083515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eadc29ed50e1748b8afb61a14c59b595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1035083517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035083515}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 697.6081, y: 1393.3049, z: -0.94716704}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1063665124
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1063665125
 RectTransform:
   m_ObjectHideFlags: 0
@@ -522,9 +567,9 @@ RectTransform:
   - {fileID: 1892678618}
   m_Father: {fileID: 1063665125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540, y: -1202.83}
   m_SizeDelta: {x: 372, y: 138}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1196468358
@@ -633,7 +678,6 @@ GameObject:
   - component: {fileID: 1391588103}
   - component: {fileID: 1391588102}
   - component: {fileID: 1391588101}
-  - component: {fileID: 1391588104}
   m_Layer: 5
   m_Name: LoginWithFB
   m_TagString: Untagged
@@ -656,9 +700,9 @@ RectTransform:
   - {fileID: 1660603662}
   m_Father: {fileID: 1063665125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540, y: -957.17}
   m_SizeDelta: {x: 372, y: 138}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1391588101
@@ -705,9 +749,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391588104}
-        m_TargetAssemblyTypeName: FB_Inteface, Assembly-CSharp
-        m_MethodName: LoginToFb
+      - m_Target: {fileID: 904221134}
+        m_TargetAssemblyTypeName: LoginController, Assembly-CSharp
+        m_MethodName: LoginToFB
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -755,18 +799,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391588099}
   m_CullTransparentMesh: 1
---- !u!114 &1391588104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1391588099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eadc29ed50e1748b8afb61a14c59b595, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1401584859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,3 +1632,4 @@ SceneRoots:
   - {fileID: 567191861}
   - {fileID: 1412534481}
   - {fileID: 687979876}
+  - {fileID: 1035083517}

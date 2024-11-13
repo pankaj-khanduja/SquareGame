@@ -46,7 +46,7 @@ public class UIManager : MonoBehaviour
             SquareController.Instance.Game1();
             WaitingCanvas.SetActive(true);
             playerIQScore.enabled = false;
-            MultiScoreView.SetActive(true);
+           
         }
 
     }
@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour
 
     void EnableMultiCanvas()
     {
-       
+        MultiScoreView.SetActive(true);
         WaitingCanvas.SetActive(false);
     }
 
